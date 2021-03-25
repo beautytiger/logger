@@ -31,7 +31,7 @@ def main():
         line_per_second = int(line_per_second)
 
     no_sleep = os.getenv("NO_SLEEP")
-    if no_sleep:
+    if no_sleep == 'true':
         for i in range(1, line_total+1):
             logger.info("%s %032d" % (uid, i))
     else:
