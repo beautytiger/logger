@@ -30,7 +30,7 @@ def main():
     else:
         line_per_second = int(line_per_second)
 
-    no_sleep = os.getenv("NO_SLEEP")
+    no_sleep = os.getenv("INSECURE_SELFTESTONLY_NO_SLEEP")
     if no_sleep == 'true':
         for i in range(1, line_total+1):
             logger.info("%s %032d" % (uid, i))
@@ -51,10 +51,10 @@ def main():
 
     while True:
         time.sleep(1)
-    sys.exit(0)
+
 
 def do_exit(sig, stack):
-    raise sys.exit(0)
+    sys.exit(0)
 
 signal.signal(signal.SIGINT, do_exit)
 signal.signal(signal.SIGTERM, do_exit)
